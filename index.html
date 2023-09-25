@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- External CSS files -->
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <!-- Font Awesome Kit -->
+    <script
+      src="https://kit.fontawesome.com/4a45b90c57.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Tic-Tac-Toe Avion Project</title>
+  </head>
+  <body class="flex">
+    <!-- Front Page Section -->
+    <section class="front__page">
+      <h1 class="game__title">Tic Tac</h1>
+      <div class="game__logo">
+        <div class="bar bar__1"></div>
+        <div class="bar bar__2"></div>
+      </div>
+      <button class="btn btn__start-game">Start Game</button>
+    </section>
+
+    <!-- Player Choosing Section -->
+    <section class="choosing__player hide__choosing flex">
+      <h1>Pick your Side</h1>
+      <div class="choosing__button-player flex">
+        <button data-player="X">X</button>
+        <button data-player="O">O</button>
+      </div>
+    </section>
+
+    <!-- Main Board Section -->
+    <main class="board__container">
+      <!-- Board Options (Exit and Reset) -->
+      <section class="board__option hidden flex">
+        <button class="btn btn__exit">
+          <i class="fa-solid fa-house"></i>
+        </button>
+        <button class="btn btn__reset">
+          <i class="fa-solid fa-arrow-rotate-left"></i>
+        </button>
+      </section>
+
+      <!-- Player Information -->
+      <section class="board__player grid">
+        <!-- Player X -->
+        <p class="player player__0 flex">Player <span>X</span></p>
+
+        <!-- Scoreboard -->
+        <p class="score__board flex">
+          <span class="score score__player-0">0</span> :
+          <span class="score__draw">0</span> :
+          <span class="score score__player-1">0</span>
+        </p>
+
+        <!-- Player O -->
+        <p class="player player__1 flex">Player <span>O</span></p>
+      </section>
+
+      <!-- Main Board -->
+      <section class="main__board grid"></section>
+
+      <!-- Move Buttons (Previous and Next) -->
+      <div class="button__move hidden grid">
+        <button class="btn btn__previous" disabled>
+          <i class="fa-solid fa-arrow-left-long"></i> Previous
+        </button>
+        <button class="btn btn__next" disabled>
+          Next <i class="fa-solid fa-arrow-right-long"></i>
+        </button>
+      </div>
+    </main>
+
+    <!-- Winning Message -->
+    <div class="winning__message">
+      <h1>Match Ended</h1>
+      <p class="message">Player <span class="player__wins"></span> Wins!</p>
+    </div>
+
+    <!-- Overlay for Modals -->
+    <div class="overlay hidden"></div>
+
+    <div class="fireworks__container"></div>
+
+    <!-- JavaScript File -->
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

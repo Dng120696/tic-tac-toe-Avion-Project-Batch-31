@@ -1,0 +1,388 @@
+/* Importing Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Skranji:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Paytone+One&display=swap");
+
+/* Setting base styles for the page */
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-family: "Skranji", cursive;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+/* Styling for the main body */
+body {
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f6be83 0%, #db1943 100%) no-repeat
+    center center / cover;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Styles for the front page section */
+.front__page {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+  transition: left 600ms;
+}
+
+/* Styling for the game title */
+.game__title {
+  position: relative;
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(8rem, 9vw, 9rem);
+}
+
+/* Styles for the game logo */
+.game__logo {
+  position: relative;
+  width: 34rem;
+  height: 34rem;
+  margin-inline: auto;
+}
+
+.game__logo::before {
+  content: "O";
+  position: absolute;
+  top: 11.5rem;
+  right: 6rem;
+  font-size: 10rem;
+  font-family: "Paytone One", sans-serif;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* Styles for the bars in the game logo */
+.game__logo .bar {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  border-radius: 3rem;
+  width: 20rem;
+  height: 3.5rem;
+  background-color: #fff;
+}
+
+.game__logo .bar__1 {
+  transform: translate(4.5rem, 0rem) rotate(45deg);
+}
+
+.game__logo .bar__2 {
+  transform: translate(2rem, -3rem) rotate(-45deg);
+  width: 32rem;
+}
+
+/* Styles for the play game button */
+.btn__start-game {
+  position: relative;
+  border: none;
+  padding: 1rem 0;
+  background-color: transparent;
+  color: #fff;
+  font-weight: normal;
+  font-size: clamp(1.6rem, 2vw, 1.8rem);
+  cursor: pointer;
+}
+
+/* Styles for the player choosing section */
+.choosing__player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  z-index: 2;
+  flex-direction: column;
+  transition: left 800ms;
+}
+
+.hide__choosing {
+  left: -100%;
+  transition: left 800ms;
+}
+
+/* Styles for the heading in player choosing section */
+.choosing__player h1 {
+  margin-bottom: 2rem;
+  font-size: 3rem;
+}
+
+/* Styles for the buttons in player choosing section */
+.choosing__button-player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.choosing__button-player button {
+  width: 15rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 4rem;
+  font-weight: 800;
+  font-family: "Permanent Marker", cursive;
+  cursor: pointer;
+}
+
+.choosing__button-player button[data-player="X"] {
+  color: rgb(228, 17, 17);
+}
+
+.choosing__button-player button[data-player="O"] {
+  color: rgb(14, 165, 14);
+}
+
+/* Styles for the board container */
+.board__container {
+  position: relative;
+  text-align: center;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 600ms;
+}
+
+/* Styles for the player board */
+.board__player {
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+.board__player .player {
+  border: 1px solid #fff;
+  font-size: clamp(1.6rem, 2vw, 1.8rem);
+  border-radius: 5px;
+  padding: 8px 0;
+  gap: 5px;
+  font-family: "Permanent Marker", cursive;
+}
+
+.board__player .player span {
+  font-family: "Permanent Marker", cursive;
+  font-size: clamp(2rem, 2vw, 2.2rem);
+}
+
+.board__player .score__board {
+  gap: 5px;
+  font-size: 3.6rem;
+}
+
+.board__player .active__player {
+  background-color: #fff;
+  color: slategray;
+}
+
+/* Styles for the main game board container */
+.board__container .main__board {
+  border-radius: 1rem;
+  padding: 2rem;
+  background-color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Styles for the individual board cells */
+.main__board .board {
+  width: clamp(10.5rem, 12vw, 12rem);
+  height: clamp(10.5rem, 12vw, 12rem);
+  font-weight: 800;
+  font-family: "Permanent Marker", cursive;
+  font-size: clamp(6rem, 6.5vw, 7rem);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+}
+
+/* Styles for borders in the game board */
+.main__board .board:first-child,
+.main__board .board:nth-child(2),
+.main__board .board:nth-child(3) {
+  border-top: none;
+}
+
+.main__board .board:last-child,
+.main__board .board:nth-child(7),
+.main__board .board:nth-child(8) {
+  border-bottom: none;
+}
+
+.main__board .board:nth-child(3n) {
+  border-right: none;
+}
+
+.main__board .board:nth-child(3n-2) {
+  border-left: none;
+}
+
+/* Styles for winning and player's turn messages */
+.winning__message,
+.players__turn {
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  transform: translate(-50%, -50%);
+  padding: 5rem;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  text-align: center;
+  font-size: clamp(2.2rem, 2.6vw, 2.8rem);
+  z-index: 20;
+  transition: left 800ms, opacity 800ms;
+}
+
+/* Styles for player wins message */
+.player__wins {
+  font-size: 5rem;
+  font-family: "Permanent Marker", cursive;
+}
+
+.fireworks__container {
+  position: absolute;
+  top: 55%;
+  left: -100%;
+  height: 50vh;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.fireworks {
+  position: absolute;
+  width: clamp(1rem, 1.5vw, 1.5rem);
+  height: clamp(1rem, 1.5vw, 1.5rem);
+  border-radius: 50%;
+  opacity: 0;
+  animation: explode 1s ease-out;
+  transition: animation 600ms;
+}
+
+@keyframes explode {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+/* Showing the message */
+.show {
+  left: 50%;
+  opacity: 1;
+  transition: left 600ms, opacity 600ms;
+}
+
+/* Styles for buttons */
+.btn {
+  font-weight: 700;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 5px;
+  font-size: clamp(1.6rem, 2vw, 1.8rem);
+  padding: 1rem 3rem;
+  background-color: transparent;
+}
+
+/* Styles for board options */
+.board__option {
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+/* Styles for move buttons */
+.button__move {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  left: 50%;
+  bottom: -8.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.board__option button {
+  border: none;
+  padding: 5px 1rem;
+  font-size: clamp(2.2rem, 2.6vw, 2.8rem);
+}
+
+/* Hover styles for buttons */
+.btn:not(.board__player button, .button__move button:disabled):hover {
+  background-color: #fff;
+  color: slategray;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+/* Disabled button styles */
+.btn:disabled {
+  color: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgb(255, 255, 255, 0.3);
+  cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+  background-color: transparent;
+  cursor: not-allowed;
+  transition: none;
+}
+
+/* Styles for overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(1px);
+  z-index: 0;
+}
+
+/* Styles for X and O symbols */
+.X,
+.player__0 span {
+  color: rgb(228, 17, 17);
+}
+
+.O,
+.player__1 span {
+  color: rgb(14, 165, 14);
+}
+
+/* Hidden class for elements */
+.hidden {
+  display: none;
+}
+
+/* Showing the board */
+.show__board {
+  opacity: 1;
+  transition: opacity 600ms;
+}
